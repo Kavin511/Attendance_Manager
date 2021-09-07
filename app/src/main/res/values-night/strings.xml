@@ -5,4 +5,6 @@
     <string name="attendanceEntry">attendance Entry</string>
     <string name="work_starting_time">Work starting time</string>
     <string name="work_ending_time">Work ending time</string>
+    <string name="employee_name">Employee Name</string>
+    <string name="sign_in">Login</string>
 </resources>

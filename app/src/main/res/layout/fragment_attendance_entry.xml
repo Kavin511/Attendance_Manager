@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="attendanceEntryViewModel"
-            type="com.example.attendance_sheet.ui.attendanceEntry.AttendanceEntryViewModel" />
+            name="attendanceViewModel"
+            type="com.example.attendance_sheet.viewModels.AttendanceViewModel" />
     </data>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        tools:context=".ui.attendanceEntry.Attendance"
+        >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/attendanceEntry"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:context=".ui.attendanceEntry.attendanceEntry">
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        >
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/labourNameLayout"
@@ -24,25 +27,32 @@
             android:labelFor="@+id/labourName"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:focusableInTouchMode="true"
+            app:error="@{attendanceViewModel.errorName}"
+            app:errorEnabled="true"
+            app:boxStrokeErrorColor="#C62828">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/labourName"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
                 android:ems="10"
-                android:hint="Labour Name"
+                android:hint="@string/employee_name"
                 android:lines="1"
-                android:text="@={attendanceEntryViewModel.labourName}"
-                app:textInputLayoutFocusedRectEnabled="false" />
+                android:focusableInTouchMode="true"
+                android:text="@={attendanceViewModel.labourName}"
+                app:textInputLayoutFocusedRectEnabled="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
             android:id="@+id/work_starting_time_layout"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labourNameLayout">
@@ -52,30 +62,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp"
+                android:layout_toStartOf="@+id/work_starting_time"
                 android:text="@string/work_starting_time"
+                android:textSize="16sp"
                 android:textAlignment="textStart"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/work_starting_time"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TimePicker
-
                 android:id="@+id/work_starting_time"
                 android:layout_width="wrap_content"
-                android:layout_height="90dp"
+                android:amPmTextColor="@color/primaryVariant"
+                android:headerAmPmTextAppearance="@color/white"
+                android:layout_height="150dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="0dp"
                 android:timePickerMode="spinner"
+                android:elevation="10dp"
+                android:background="@drawable/time_picker_background"
                 app:layout_constraintRight_toRightOf="parent" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/work_ending_time_layout"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/work_starting_time_layout">
@@ -85,9 +98,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp"
+                android:layout_toStartOf="@+id/work_ending_time"
                 android:text="@string/work_ending_time"
+                android:textSize="16sp"
                 android:textAlignment="viewStart"
                 app:flow_horizontalAlign="center"
                 app:flow_verticalAlign="center"
@@ -96,9 +109,11 @@
             <TimePicker
                 android:id="@+id/work_ending_time"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_alignParentEnd="true"
                 android:timePickerMode="spinner"
+                android:elevation="10dp"
+                android:background="@drawable/time_picker_background"
                 app:layout_constraintRight_toRightOf="parent" />
         </RelativeLayout>
 
@@ -109,7 +124,9 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="10dp"
             android:padding="10dp"
-            android:text="Does the worker worked overtime ?"
+            android:text="Does the employee worked overtime ?"
+            android:textSize="14sp"
+            android:checked="@={attendanceViewModel.overTimeWorked}"
             app:flow_horizontalAlign="center"
             app:layout_constraintTop_toBottomOf="@id/work_ending_time_layout" />
 
@@ -119,6 +136,7 @@
             android:layout_height="90dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:focusableInTouchMode="true"
             app:layout_constraintTop_toBottomOf="@+id/overtTimeCheckBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -129,15 +147,14 @@
                 android:layout_marginVertical="10dp"
                 android:hint="Salary amount"
                 android:inputType="numberDecimal"
-                android:text="@={attendanceEntryViewModel.labourSalary}" />
+                android:text="@={attendanceViewModel.labourSalary}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addAttendance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:onClick="@{attendanceEntryViewModel::onEntryClicked}"
+            android:onClick="@{attendanceViewModel::onEntryClicked}"
             android:padding="15dp"
             android:text="Add Attendance"
             android:textAllCaps="false"
@@ -145,5 +162,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labourSalaryLayout" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

@@ -1,10 +1,13 @@
 <resources>
-    <string name="app_name">Attendance_Sheet</string>
-    <string name="app_title"> Attendance</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Attendance Manager</string>
+    <string name="app_title"> Attendance Manager</string>
     <string name="hello_blank_fragment"> blank fragment</string>
     <string name="attendanceLog">attendance Log</string>
     <string name="attendanceEntry">attendance Entry</string>
     <string name="work_starting_time">Work starting time</string>
     <string name="work_ending_time">Work ending time</string>
+    <string name="no_records">No attendance records found</string>
+    <string name="employee_name">Employee Name</string>
+    <string name="sign_up">Register</string>
+    <string name="sign_in">Login</string>
 </resources>
