@@ -6,7 +6,7 @@
     <data>
         <variable
             name="authenticationViewModel"
-            type="com.example.attendance_sheet.viewModels.AuthenticationViewModel" />
+            type="com.devstudio.check_in.viewModels.AuthenticationViewModel" />
     </data>
 
     <FrameLayout

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="attendanceViewModel"
-            type="com.example.attendance_sheet.viewModels.AttendanceViewModel" />
+            type="com.devstudio.check_in.viewModels.AttendanceViewModel" />
     </data>
     <ScrollView
         android:layout_width="match_parent"

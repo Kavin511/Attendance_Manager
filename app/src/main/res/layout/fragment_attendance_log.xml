@@ -4,11 +4,7 @@
     <data>
         <variable
             name="attendanceViewModel"
-            type="com.example.attendance_sheet.viewModels.AttendanceViewModel" />
-        <import type="android.view.View"/>
-        <variable
-            name="data"
-            type="java.lang.Boolean"/>
+            type="com.devstudio.check_in.viewModels.AttendanceViewModel" />
     </data>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
@@ -24,9 +20,9 @@
             android:layout_height="match_parent"
             android:id="@+id/recyclerView"
             android:soundEffectsEnabled="true"
+            android:overScrollMode="always"
             android:background="#FFF"
-
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
         <LinearLayout
             android:layout_width="match_parent"
