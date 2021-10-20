@@ -7,6 +7,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        checkin {
+            storeFile file(kotlin_version)
+            storePassword 'checkin'
+            keyAlias 'checkin'
+            keyPassword 'checkin'
+        }
+    }
     compileSdkVersion 30
     defaultConfig {
         applicationId "com.devstudios.attendance_sheet"
@@ -18,13 +26,13 @@ android {
     }
 
     buildTypes {
-        debug {
-            buildConfigField "String", "RealmAppId", "\"attendance-irxim\""
-        }
+//        debug {
+//            buildConfigField "String", "RealmAppId", "\"attendance-irxim\""
+//        }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "RealmAppId", "\"attendance-irxim\""
+//            buildConfigField "String", "RealmAppId", "\"attendance-irxim\""
         }
     }
     compileOptions {
