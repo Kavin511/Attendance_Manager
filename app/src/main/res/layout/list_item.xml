@@ -7,6 +7,14 @@
     android:layout_margin="2dp"
     android:background="@drawable/item_background">
     <TextView
+        android:id="@+id/options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:padding="15dp"
+        android:text="&#8942;"
+        android:textAppearance="?android:textAppearanceLarge" />    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labourName"

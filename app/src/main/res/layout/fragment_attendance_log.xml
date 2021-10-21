@@ -4,7 +4,8 @@
     <data>
         <variable
             name="attendanceViewModel"
-            type="com.devstudio.check_in.viewModels.AttendanceViewModel" />
+            type="com.dev_studio.check_in.viewModels.AttendanceViewModel" />
+        <import type="android.view.View"/>
     </data>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
@@ -30,7 +31,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:id="@+id/noAttendance"
-            android:visibility="gone"
+            android:visibility="@{attendanceViewModel.havingRecords? View.GONE : View.VISIBLE}"
             >
             <ImageView
                 android:layout_width="match_parent"
